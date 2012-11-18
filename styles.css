@@ -1,0 +1,87 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+* {margin: 0; padding: 0; border: none;}
+html, button, input, select, textarea {color: #222; }
+body {font-size: 1em; line-height: 1.4; }
+::-moz-selection {background: #b3d4fc; text-shadow: none; }
+::selection { background: #b3d4fc; text-shadow: none; }
+hr {display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
+img {vertical-align: middle; }
+fieldset {border: 0; margin: 0; padding: 0;}
+textarea {resize: vertical;}
+ 
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+body {padding: 20px;background: #efefef; font-family: lato;}
+
+#header {width: 100%; max-width: 1300px; margin: 0 auto; background: #555; border-radius: 10px 10px 0 0 ; border: 1px solid #555; border-bottom: 0;}
+#header > div {padding: 20px;}
+#header h1 {margin: 0; padding: 0; color: #fff; line-height: 1;}
+
+#container {width: 100%; max-width: 1300px; margin: 0 auto; background: #fff; border-radius: 0 0 10px 10px; border: 1px solid #ccc;}
+#container > div {padding: 20px;}
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   Theses examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+       only screen and (min-resolution: 144dpi) {
+    /* Style adjustments for high resolution devices */
+}
