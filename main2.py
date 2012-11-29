@@ -33,7 +33,7 @@ while True:
   line = arduino.readline().rstrip("\n")
   matchObj = re.search('\d\d\.\d', line)
   value = matchObj.group()
-  print value
+  print line
   with con:
     cur = con.cursor()
     cur.execute("INSERT INTO info(temp) VALUES('" + value + "')")

@@ -4,22 +4,9 @@ include 'include.php';
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
-$host = 'localhost';
-$user = 'root';
-$pass = 'password';
-$db = 'serial';
-
-$con = mysql_connect($host, $user, $pass);
-if (!$con) {
-     die('Could not connect: ' . mysql_error());
-}
-
-mysql_select_db($db, $con);
-
+$con = dbConnect();
 $result = mysql_query("SELECT * FROM info ORDER BY time DESC LIMIT 1");
 $row = mysql_fetch_array($result);
-
-
 mysql_close($con);
 
 ?>
@@ -34,6 +21,7 @@ mysql_close($con);
   <link rel="stylesheet" href="styles.css">  
 </head>
 <body>
+
   <div id="header">    
     <div>
       <h1>Remote Weather Station</h1>
@@ -41,19 +29,53 @@ mysql_close($con);
   </div>
 
   <div id="container">
-    <div>
-      <dl id="stats">
-        <dt>Temp</dt>
-        <dd><?php print $row['temp']; ?></dd>
-        <dt>Humidity</dt>
-        <dd><?php print $row['humidity']; ?></dd>
-        <dt>Pressure</dt>
-        <dd><?php print $row['pressure']; ?></dd>
-        <dt>light</dt>
-        <dd><?php print $row['light']; ?></dd>
-      </dl>
-    </div>
-  </div>  
+    <div id="content" class="clearfix">
+      <ul id="alerts">
+      
+      </ul>
+  
+      <div id="temp" class="panel">
+        <div>
+          <h2>Tempurature</h2>
+          <h3><?php print $row['temp']; ?></h3>
+          <div class="chart">
+          
+          </div>
+        </div>
+      </div>
+
+      <div id="humidity" class="panel right">
+        <div>
+          <h2>Humidity</h2>
+          <h3><?php print $row['humidity']; ?></h3>
+          <div class="chart">
+          
+          </div>
+        </div>
+      </div>
+
+      <div id="pressure" class="panel">
+        <div>
+          <h2>Pressure</h2>
+          <h3><?php print $row['pressure']; ?></h3>
+          <div class="chart">
+          
+          </div>
+        </div>
+      </div>
+
+      <div id="light" class="panel right">
+        <div>
+          <h2>Light</h2>
+          <h3><?php print $row['light']; ?></h3>
+          <div class="chart">
+          
+          </div>
+        </div>
+      </div>
+      <a href="#" id="update">Update</a>
+    </div> <!-- /content -->
+  </div><!-- /container -->  
   
   <!-- JS Scripts -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>

@@ -32,8 +32,26 @@ with con:
                  light DECIMAL(4,2) UNSIGNED, \
                  time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP)")
 
+
+arduino = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
+time.sleep(2) #arduino resets when we connects so sleep for a little bit
+
 while True:
-    with con:
-        cur.execute("INSERT INTO info(temp) VALUES('1.0')")
-        print "inserted"
-        time.sleep(4)
+  wg = arduino.write('T')
+  line = arduino.readline().rstrip("\n")
+  values = json.loads(line);
+  print line
+  with con:
+    cur = con.cursor()
+    insertString = "INSERT INTO info(temp, pressure, light, humidity) VALUES('" + \
+                 values['data']['temp'] + "','" + \
+                 values['data']['pressure'] + "','" + \
+                 values['data']['light'] + "','" + \
+                 values['data']['hummidity'] + \
+                 "')"
+    cur.execute(insertString)
+
+  time.sleep(2)
+
+arduino.close()
+
