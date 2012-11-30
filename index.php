@@ -48,7 +48,7 @@ mysql_close($con);
       <div id="humidity" class="panel right">
         <div>
           <h2>Humidity</h2>
-          <h3><?php print $row['humidity']; ?></h3>
+          <h3><?php print $row['humidity']; ?> %</h3>
           <div class="chart">
           
           </div>

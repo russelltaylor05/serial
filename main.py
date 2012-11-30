@@ -37,6 +37,8 @@ arduino = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
 time.sleep(2) #arduino resets when we connects so sleep for a little bit
 
 while True:
+  wg = arduino.write('H')
+  time.sleep(3);
   wg = arduino.write('T')
   line = arduino.readline().rstrip("\n")
   values = json.loads(line);

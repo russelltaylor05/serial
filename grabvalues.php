@@ -45,6 +45,16 @@ case 'pressure':
   print json_encode($stack);  
   break;
 
+case 'humidity':
+  $stack = array();
+  $result = mysql_query("SELECT id, humidity, time FROM info ORDER BY time DESC LIMIT 30");  
+  while($row = mysql_fetch_array($result)) {
+    $row['time'] = strtotime($row['time']);
+    $stack[] = $row;
+  }  
+  print json_encode($stack);  
+  break;
+
 }
 
 
