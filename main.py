@@ -26,10 +26,10 @@ with con:
     cur.execute("DROP TABLE info")
     cur.execute("CREATE TABLE IF NOT EXISTS \
                  info(id INT PRIMARY KEY AUTO_INCREMENT, \
-                 temp DECIMAL(4,2) UNSIGNED, \
-                 humidity DECIMAL(4,2) UNSIGNED, \
-                 pressure DECIMAL(4,2) UNSIGNED, \
-                 light DECIMAL(4,2) UNSIGNED, \
+                 temp DECIMAL(6,2) UNSIGNED, \
+                 humidity DECIMAL(6,2) UNSIGNED, \
+                 pressure DECIMAL(6,2) UNSIGNED, \
+                 light DECIMAL(6,2) UNSIGNED, \
                  time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP)")
 
 
@@ -41,14 +41,19 @@ while True:
   line = arduino.readline().rstrip("\n")
   values = json.loads(line);
   print line
+    
+  temp = float(values['data']['temp'].strip('"')) / 100;
+  light = float(values['data']['light'].strip('"'));
+  humidity = float(values['data']['humidity'].strip('"')) / 100;
+  pressure = float(values['data']['pressure'].strip('"')) / 100;
+  
+  
   with con:
     cur = con.cursor()
-    insertString = "INSERT INTO info(temp, pressure, light, humidity) VALUES('" + \
-                 values['data']['temp'] + "','" + \
-                 values['data']['pressure'] + "','" + \
-                 values['data']['light'] + "','" + \
-                 values['data']['hummidity'] + \
-                 "')"
+
+    insertString = "INSERT INTO info(temp, pressure, light, humidity)" + \
+                   "VALUES('%f','%f','%f','%f')" % (temp, pressure, light, humidity)
+
     cur.execute(insertString)
 
   time.sleep(2)

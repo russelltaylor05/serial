@@ -1,9 +1,6 @@
 <?php
 include 'include.php';
 
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
-
 $con = dbConnect();
 $result = mysql_query("SELECT * FROM info ORDER BY time DESC LIMIT 1");
 $row = mysql_fetch_array($result);
@@ -22,22 +19,26 @@ mysql_close($con);
 </head>
 <body>
 
-  <div id="header">    
-    <div>
-      <h1>Remote Weather Station</h1>
-    </div>
-  </div>
-
   <div id="container">
+
+    <div id="header" >    
+      <div class="clearfix">
+        <h1>Remote Weather Station</h1>
+        <p class="time"><?php print date("F j - g:i"); ?></p>
+      </div>
+    </div>
+
     <div id="content" class="clearfix">
-      <ul id="alerts">
-      
+      <ul id="alerts" class="clearfix">
+        <li class="day"></li>
+        <li class="fire"></li>      
+        <li class="storm"></li>      
       </ul>
   
       <div id="temp" class="panel">
         <div>
           <h2>Tempurature</h2>
-          <h3><?php print $row['temp']; ?></h3>
+          <h3><?php print $row['temp']; ?>  &deg;F</h3>
           <div class="chart">
           
           </div>
@@ -78,9 +79,10 @@ mysql_close($con);
   </div><!-- /container -->  
   
   <!-- JS Scripts -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="js/jquery.js"></script>
   <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
   <script src="js/main.js"></script>
+  <script language="javascript" type="text/javascript" src="flot/jquery.flot.js"></script>  
 </body>
 </html>
 

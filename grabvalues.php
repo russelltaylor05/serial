@@ -13,12 +13,38 @@ case 'all':
   $row = mysql_fetch_array($result);
   print json_encode($row);
   break;
-case 1:
-    echo "i equals 1";
-    break;
-case 2:
-    echo "i equals 2";
-    break;
+  
+case 'temp':
+  $stack = array();
+  $result = mysql_query("SELECT id,temp,time FROM info ORDER BY time DESC LIMIT 30");  
+  while($row = mysql_fetch_array($result)) {
+    $row['time'] = strtotime($row['time']);
+    $stack[] = $row;
+  }  
+  print json_encode($stack);  
+  break;
+
+case 'light':
+  $stack = array();
+  $result = mysql_query("SELECT id, light, time FROM info ORDER BY time DESC LIMIT 30");  
+  while($row = mysql_fetch_array($result)) {
+    $row['time'] = strtotime($row['time']);
+    $stack[] = $row;
+  }  
+  print json_encode($stack);  
+  break;
+
+
+case 'pressure':
+  $stack = array();
+  $result = mysql_query("SELECT id, pressure, time FROM info ORDER BY time DESC LIMIT 30");  
+  while($row = mysql_fetch_array($result)) {
+    $row['time'] = strtotime($row['time']);
+    $stack[] = $row;
+  }  
+  print json_encode($stack);  
+  break;
+
 }
 
 

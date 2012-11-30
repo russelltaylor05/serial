@@ -1,0 +1,5 @@
+
+# Determine which port usb is plugged into
+# seems to be ACM0
+
+tail -f /var/log/messages

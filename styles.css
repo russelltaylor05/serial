@@ -16,24 +16,35 @@ h1, h2, h3, h4 {margin: 0; padding: 0; line-height: 1; }
    Author's custom styles
    ========================================================================== */
 
-body {padding: 20px;background: #efefef; font-family: lato;}
+body {padding: 50px 20px 20px 20px; background: url(images/background.jpg) top center repeat-x; font-family: lato;}
 
-#header {width: 100%; max-width: 1300px; margin: 0 auto; background: #555; border-radius: 10px 10px 0 0 ; border: 1px solid #555; border-bottom: 0;}
-#header > div {padding: 20px;}
-#header h1 {margin: 0; padding: 0; color: #fff; line-height: 1;}
+#header { background: #fff;  font-family: Courier; padding: 0 0 10px 0;}
+#header > div {padding: 20px; border-bottom: 3px solid #66839c;}
+#header h1 {margin: 0; padding: 0; color: #fff; line-height: 1; float: left; font-weight: normal; color: #000}
+#header p {float: right; color: #7f7f7f; font-size: 25px;}
 
-#container {width: 100%; max-width: 1300px; margin: 0 auto; background: #fff; border-radius: 0 0 10px 10px; border: 1px solid #ccc;}
+#container {width: 100%; max-width: 1300px; padding-top: 10px; margin: 0 auto; background: #fff; border-radius: 10px; 
+  box-shadow:  0 2px 5px 5px rgba(0,0,0,.5);}
 #container > div {padding: 20px;}
 
 
-.panel {width: 48%; margin: 0 0 20px 0; float: left; border: 1px solid #000;}
+.panel {width: 48%; margin: 0 0 20px 0; float: left; }
 .panel.right {float: right;}
-.panel > div {padding: 20px;}
-.panel h2 {float: left; font-size: 18px;}
-.panel h3 {float: right; font-size: 16px;}
+.panel > div {padding: 30px;}
+.panel h2 {margin: 0 0 25px 0; float: left; font-size: 18px; color: #66839c; font-size: 25px; font-weight: 300; line-height: 25px;}
+.panel h3 {float: right; font-size: 16px; color: #00305a; font-size: 25px; font-weight: 400; line-height: 25px;}
 
+.panel .chart {height: 200px; width: 100%; clear: both;}
 
+#alerts,
+#alerts li {margin: 0 30px 0 0; padding: 0; list-style: none;}
+#alerts li {height: 130px; width: 130px; float: left;}
 
+#alerts .day {background: url(images/sun.jpg) center center no-repeat;}
+#alerts .day.active {background: url(images/moon.jpg) center center no-repeat;}
+#alerts .fire {background: url(images/fire.png) center center no-repeat;}
+#alerts .fire.active {background: url(images/fire_active.jpg) center center no-repeat;}
+#alerts .storm {background: url(images/storm.png) center center no-repeat;}
 
 
 
